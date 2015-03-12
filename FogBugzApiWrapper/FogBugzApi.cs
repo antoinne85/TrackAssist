@@ -163,6 +163,11 @@ namespace FogBugzApiWrapper
 
         public List<Interval> ListIntervals(int maxDaysAgo)
         {
+            return ListIntervals(maxDaysAgo, 1);
+        }
+
+        public List<Interval> ListIntervals(int maxDaysAgo, int userId)
+        {
             var request = new GenericFogBugzRequest
             {
                 Command = Command.ListIntervals,
@@ -177,15 +182,15 @@ namespace FogBugzApiWrapper
                     {
                         Argument = Argument.EndDate,
                         Value = DateTime.UtcNow.ToString("u")
-                    },
+                    }
+                    ,
                     new GenericRequestArgument
                     {
                         Argument = Argument.UserId,
-                        Value = "1"
+                        Value = userId.ToString()
                     }
                 }
             };
-            var simple = ExecuteSimple(request);
             var result = Execute<Response>(request);
             return result.Intervals.ToList();
         }

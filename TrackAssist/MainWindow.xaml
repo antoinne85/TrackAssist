@@ -1,0 +1,56 @@
+﻿<Window x:Class="TrackAssist.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+        xmlns:metroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="File"></MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <Button Command="{Binding Refresh}">Refresh w/ Filters</Button>
+                <Button Command="{Binding SaveConfigurations}">Save Config</Button>
+                <Button Command="{Binding LoadConfigurations}">Load Config</Button>
+            </ToolBar>
+        </ToolBarTray>
+        <!-- Main Content -->
+        <xcad:DockingManager Grid.Row="2">
+            <xcad:LayoutRoot>
+                <xcad:LayoutPanel>
+                    <xcad:LayoutAnchorablePane DockWidth="*">
+                        <!-- Case List -->
+                        <xcad:LayoutAnchorable Title="All Active Cases">
+                            <xcdg:DataGridControl HorizontalAlignment="Stretch" ItemsSource="{Binding Path=FilteredCases}">
+                                
+                            </xcdg:DataGridControl>
+                        </xcad:LayoutAnchorable>
+                        <!-- Charts -->
+                        <xcad:LayoutAnchorable Title="Charts">
+                            <UniformGrid Rows="3" Columns="2" x:Name="ChartArea"></UniformGrid>
+                        </xcad:LayoutAnchorable>
+                    </xcad:LayoutAnchorablePane>
+                </xcad:LayoutPanel>
+                <!-- Left Side -->
+                <xcad:LayoutRoot.LeftSide>
+                    <xcad:LayoutAnchorSide>
+                        <xcad:LayoutAnchorGroup x:Name="WidgetArea">
+                            
+                        </xcad:LayoutAnchorGroup>
+                    </xcad:LayoutAnchorSide>
+                </xcad:LayoutRoot.LeftSide>
+            </xcad:LayoutRoot>
+        </xcad:DockingManager>
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="3">Status Bar</StatusBar>
+    </Grid>
+</Window>

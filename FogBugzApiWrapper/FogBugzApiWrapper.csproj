@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07FDA1B6-12FB-482C-9F32-A94475CAE5DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FogBugzApiWrapper</RootNamespace>
+    <AssemblyName>FogBugzApiWrapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Annotations\AcceptableArgumentAttributeBase.cs" />
+    <Compile Include="Annotations\LooseArgumentsAttribute.cs" />
+    <Compile Include="Annotations\NoArgumentsAttribute.cs" />
+    <Compile Include="Annotations\OptionalArgumentsAttribute.cs" />
+    <Compile Include="Annotations\QueryableAttribute.cs" />
+    <Compile Include="Annotations\RequiredArgumentsAttribute.cs" />
+    <Compile Include="Contracts\IGenericFogBugzRequest.cs" />
+    <Compile Include="Contracts\IGenericRequestArgument.cs" />
+    <Compile Include="Data\CaseColumn.cs" />
+    <Compile Include="Data\DateCaseColumn.cs" />
+    <Compile Include="Data\FogBugzSearchQueryBuilder.cs" />
+    <Compile Include="Data\IdCaseColumn.cs" />
+    <Compile Include="Data\GenericRequestFlagArgument.cs" />
+    <Compile Include="Data\GenericFogBugzRequest.cs" />
+    <Compile Include="Data\GenericFogBugzRequestUriBuilder.cs" />
+    <Compile Include="Data\GenericRequestArgument.cs" />
+    <Compile Include="Data\QueryArgument.cs" />
+    <Compile Include="Data\ScoutCaseColumn.cs" />
+    <Compile Include="Data\UserType.cs" />
+    <Compile Include="FogBugzApi.cs" />
+    <Compile Include="Data\Command.cs" />
+    <Compile Include="Data\Argument.cs" />
+    <Compile Include="Data\Operation.cs" />
+    <Compile Include="GenericSerializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestObjects\Case.cs" />
+    <Compile Include="RequestObjects\LoginError.cs" />
+    <Compile Include="RequestObjects\LoginResult.cs" />
+    <Compile Include="RequestObjects\Response.cs" />
+    <Compile Include="RequestObjects\Tag.cs" />
+    <Compile Include="Requests\Cases\CaseApi.cs" />
+    <Compile Include="Utilities\EnumUtils.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

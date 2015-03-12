@@ -30,9 +30,9 @@
                     <xcad:LayoutAnchorablePane DockWidth="*">
                         <!-- Case List -->
                         <xcad:LayoutAnchorable Title="All Active Cases">
-                            <xcdg:DataGridControl HorizontalAlignment="Stretch" ItemsSource="{Binding Path=FilteredCases}">
+                            <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Path=FilteredCases}">
                                 
-                            </xcdg:DataGridControl>
+                            </DataGrid>
                         </xcad:LayoutAnchorable>
                         <!-- Charts -->
                         <xcad:LayoutAnchorable Title="Charts">

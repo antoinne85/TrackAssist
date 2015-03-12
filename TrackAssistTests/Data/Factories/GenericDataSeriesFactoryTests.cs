@@ -3,6 +3,8 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TrackAssist.Data.Factories;
 using TrackAssist.ViewModels;
+using TrackAssist.Contracts.Enums;
+using TrackAssist.Shared.ViewModels;
 
 namespace TrackAssistTests.Data.Factories
 {
@@ -56,8 +58,8 @@ namespace TrackAssistTests.Data.Factories
             var generatedSeries = Factory.Create(Cases, c => c.AssignedTo, c => c.Number, ValueAggregationMode.Sum);
             var tonysCases = generatedSeries.DataPoints.FirstOrDefault(dp => dp.Category == "Tony");
             var carlysCases = generatedSeries.DataPoints.FirstOrDefault(dp => dp.Category == "Carly");
-            Assert.AreEqual(3, tonysCases.Value);
-            Assert.AreEqual(12, carlysCases.Value);
+            Assert.AreEqual(3, tonysCases.YValue);
+            Assert.AreEqual(12, carlysCases.YValue);
         }
 
         [TestMethod]
@@ -67,8 +69,8 @@ namespace TrackAssistTests.Data.Factories
             var generatedSeries = Factory.Create(Cases, c => c.AssignedTo, c => c.Number, ValueAggregationMode.Average);
             var tonysCases = generatedSeries.DataPoints.FirstOrDefault(dp => dp.Category == "Tony");
             var carlysCases = generatedSeries.DataPoints.FirstOrDefault(dp => dp.Category == "Carly");
-            Assert.AreEqual(1.5, tonysCases.Value);
-            Assert.AreEqual(4, carlysCases.Value);
+            Assert.AreEqual(1.5, tonysCases.YValue);
+            Assert.AreEqual(4, carlysCases.YValue);
         }
 
         [TestMethod]
@@ -78,8 +80,8 @@ namespace TrackAssistTests.Data.Factories
             var generatedSeries = Factory.Create(Cases, c => c.AssignedTo, c => c.Number, ValueAggregationMode.PercentOfWhole);
             var tonysCases = generatedSeries.DataPoints.FirstOrDefault(dp => dp.Category == "Tony");
             var carlysCases = generatedSeries.DataPoints.FirstOrDefault(dp => dp.Category == "Carly");
-            Assert.AreEqual(1/5.0, tonysCases.Value);
-            Assert.AreEqual(4/5.0, carlysCases.Value);
+            Assert.AreEqual(1/5.0, tonysCases.YValue);
+            Assert.AreEqual(4/5.0, carlysCases.YValue);
         }
 
         [TestMethod]
@@ -87,7 +89,7 @@ namespace TrackAssistTests.Data.Factories
         public void WhenGivenPropertySelectors_GeneratesCorrectChartName()
         {
             var generatedSeries = Factory.Create(Cases, c => c.AssignedTo, c => c.Number);
-            Assert.AreEqual("Case Number by Assigned To User", generatedSeries.Title);
+            Assert.AreEqual("Case Number by Assigned To User", generatedSeries.Name);
         }
     }
 }

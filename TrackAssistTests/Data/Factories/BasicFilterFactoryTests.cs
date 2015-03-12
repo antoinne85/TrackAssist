@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TrackAssist.Data.Factories;
+using TrackAssist.Shared.ViewModels;
 using TrackAssist.ViewModels;
 
 namespace TrackAssistTests.Data.Factories
@@ -38,6 +39,7 @@ namespace TrackAssistTests.Data.Factories
             };
         }
 
+        /*
         [TestMethod]
         [TestCategory("Unit")]
         public void WhenInvoked_ReturnedFuncFiltersProperly()
@@ -59,7 +61,7 @@ namespace TrackAssistTests.Data.Factories
             Assert.IsTrue(filteredCases.Any(c => c.Number == 4));
             Assert.IsTrue(filteredCases.Any(c => c.Number == 5));
         }
-
+        */
         private UserViewModel GenerateUser(string name, int id, bool isSelected)
         {
             return new UserViewModel

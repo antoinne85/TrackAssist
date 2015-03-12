@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <DontImportPostSharp>True</DontImportPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PostSharp, Version=4.0.41.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\PostSharp.4.0.41\lib\net35-client\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Common">
+      <HintPath>..\packages\PostSharp.Patterns.Common.4.0.41\lib\net40\PostSharp.Patterns.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Model">
+      <HintPath>..\packages\PostSharp.Patterns.Model.4.0.41\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
   </ItemGroup>
@@ -55,11 +66,21 @@
     <Compile Include="Data\Factories\GenericDataSeriesFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FogBugzApiWrapper\FogBugzApiWrapper.csproj">
       <Project>{07FDA1B6-12FB-482C-9F32-A94475CAE5DA}</Project>
       <Name>FogBugzApiWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackAssist.Contracts\TrackAssist.Contracts.csproj">
+      <Project>{c2dfbb20-e2d6-4926-bcf8-7411b374da3d}</Project>
+      <Name>TrackAssist.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackAssist.Shared\TrackAssist.Shared.csproj">
+      <Project>{756fbc5b-99f4-46dc-8726-5f59a92eb32f}</Project>
+      <Name>TrackAssist.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\TrackAssist\TrackAssist.csproj">
       <Project>{0DF03D33-537A-4355-B3C3-F9507498B1AB}</Project>
@@ -86,6 +107,11 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\PostSharp.4.0.41\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.0.41\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.0.41\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.0.41\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

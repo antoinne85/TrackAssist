@@ -132,7 +132,6 @@ namespace FogBugzApiWrapper
                 }
             };
 
-            var text = ExecuteSimple(request);
             var result = Execute<Response>(request);
             return result.Cases.ToList();
         }
@@ -221,7 +220,6 @@ namespace FogBugzApiWrapper
                 }
             };
 
-            var text = ExecuteSimple(request);
             var result = Execute<Response>(request);
             return result.Cases.FirstOrDefault();
         }

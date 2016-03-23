@@ -425,9 +425,26 @@ namespace FogBugzApiWrapper.RequestObjects
         [Display(Name = "LDAP ID")]
         public string LdapId { get; set; }
 
-        [XmlElement("dtLastActivity")]
         [Display(Name = "Last Activity")]
-        public DateTime LastActivity { get; set; }
+        public DateTime? LastActivity { get; set; }
+
+        [XmlElement("dtLastActivity")]
+        public string ShimLastActivity
+        {
+            get { return LastActivity.HasValue ? LastActivity.Value.ToString("u") : string.Empty; }
+            set
+            {
+                DateTime result;
+                if (DateTime.TryParse(value, out result))
+                {
+                    LastActivity = result.ToUniversalTime();
+                }
+                else
+                {
+                    LastActivity = null;
+                }
+            }
+        }
 
         [XmlElement("fRecurseBugChildren")]
         [Display(Name = "Recurse Case Children")]

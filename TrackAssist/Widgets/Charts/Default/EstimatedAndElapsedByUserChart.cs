@@ -38,11 +38,24 @@ namespace TrackAssist.Widgets.Charts.EstimatedAndElapsedByUser
                     }
                 });
 
+          var dataPointsWithSeriesName = series.SelectMany(s => s.DataPoints.Select(dp => Tuple.Create(s.Name, dp)));
+          var groupedByType = dataPointsWithSeriesName.GroupBy(dp => dp.Item2.Category);
+          var newSeries = groupedByType.Select(grp => new SeriesViewModel
+          {
+            Name = grp.Key,
+            DataPoints = new ObservableCollection<DataPointViewModel>(grp.Select(dp => new DataPointViewModel
+            {
+              Category = dp.Item1,
+              YValue = dp.Item2.YValue
+            }))
+          });
+          
+
             return new ChartDataViewModel
             {
                 Title = Title,
                 SubTitle = SubTitle,
-                Series = new ObservableCollection<SeriesViewModel>(series),
+                Series = new ObservableCollection<SeriesViewModel>(newSeries),
                 ChartType = ChartType
             };
         }

@@ -89,9 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Adapters\SparrowChartsAdapter.cs" />
     <Compile Include="Adapters\SyncFusionChartAdapter.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Contracts\IChartAdapter.cs" />
     <Compile Include="Data\Factories\BasicFilterFactory.cs" />
     <Compile Include="Data\Factories\DataPointFactory.cs" />
     <Compile Include="Data\Factories\GenericDataSeriesFactory.cs" />
@@ -187,9 +187,7 @@
       <Name>TrackAssist.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.0.41\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.0.41\tools\PostSharp.targets')" />
   <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">

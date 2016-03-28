@@ -9,6 +9,7 @@ using TrackAssist.Shared.Charting;
 using TrackAssist.Widgets.Charts.SyncFusion;
 using PostSharp.Patterns.Model;
 using Syncfusion.UI.Xaml.Charts;
+using TrackAssist.Contracts;
 
 namespace TrackAssist.Adapters
 {
@@ -37,7 +38,7 @@ namespace TrackAssist.Adapters
 
             if (chartVm.ChartType == ChartType.CategoricalColumn)
             {
-              convertedSeries.XBindingPath = "Category";
+                convertedSeries.XBindingPath = "Category";
             }
 
             vm.Series.Add(convertedSeries);

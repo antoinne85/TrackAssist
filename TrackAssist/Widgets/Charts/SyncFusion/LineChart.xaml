@@ -15,7 +15,7 @@
 
             <!--Initialize the series for SfChart-->
             <syncfusion:SfChart.Legend>
-                <syncfusion:ChartLegend></syncfusion:ChartLegend>
+                <syncfusion:ChartLegend CheckBoxVisibility="Visible"></syncfusion:ChartLegend>
             </syncfusion:SfChart.Legend>
             <syncfusion:SfChart.PrimaryAxis>
                 <syncfusion:CategoryAxis FontSize="14" />

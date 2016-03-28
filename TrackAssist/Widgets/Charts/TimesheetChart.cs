@@ -17,7 +17,7 @@ namespace TrackAssist.Widgets.Charts
     {
         public string Title { get { return "Time Entry by User"; } }
         public string SubTitle { get { return "Who's putting in their hours?"; } }
-        public ChartType ChartType { get { return ChartType.SparrowColumn; } }
+        public ChartType ChartType { get { return ChartType.CategoricalColumn; } }
         public ChartDataViewModel GetData(IEnumerable<CaseViewModel> visibleCases, IEnumerable<IntervalViewModel> intervals, IGenericDataSeriesFactory dataFactory)
         {
             var groupedByDate = intervals.GroupBy(i => i.StartDate.Date);
@@ -53,7 +53,7 @@ namespace TrackAssist.Widgets.Charts
                 Series = new ObservableCollection<SeriesViewModel>(allSeries),
                 Title = Title,
                 SubTitle = SubTitle,
-                ChartType = ChartType.SparrowColumn
+                ChartType = ChartType.CategoricalColumn
             };
         }
 

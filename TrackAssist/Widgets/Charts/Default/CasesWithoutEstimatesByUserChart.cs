@@ -14,7 +14,7 @@ namespace TrackAssist.Widgets.Charts.CasesWithoutEstimatesByUser
         public Guid Identifier { get; private set; }
         public string Title { get { return "Cases w/o Estimates by User"; } }
         public string SubTitle { get { return "Who needs to get yelled at?"; } }
-        public ChartType ChartType { get { return ChartType.SparrowColumn; } }
+        public ChartType ChartType { get { return ChartType.CategoricalColumn; } }
 
         public ChartDataViewModel GetData(IEnumerable<CaseViewModel> visibleCases, IEnumerable<IntervalViewModel> intervals, IGenericDataSeriesFactory dataFactory)
         {
@@ -26,14 +26,12 @@ namespace TrackAssist.Widgets.Charts.CasesWithoutEstimatesByUser
                     YValue = grp.Count()
                 });
 
-            var seriesCollection = new ObservableCollection<SeriesViewModel>();
+            var newSeries = new SeriesViewModel();
+            newSeries.Name = Title;
 
             foreach (var dp in dataPoints)
             {
-                var newSeries = new SeriesViewModel();
-                newSeries.Name = dp.Category;
                 newSeries.DataPoints.Add(dp);
-                seriesCollection.Add(newSeries);
             }
 
 
@@ -41,8 +39,8 @@ namespace TrackAssist.Widgets.Charts.CasesWithoutEstimatesByUser
             {
                 Title = Title,
                 SubTitle = SubTitle,
-                Series = seriesCollection,
-                ChartType = ChartType.SparrowColumn
+                Series = new ObservableCollection<SeriesViewModel>(new[] { newSeries }),
+                ChartType = ChartType.CategoricalColumn
             };
         }
     }

@@ -21,12 +21,19 @@ namespace TrackAssist.Widgets.Charts.EstimatedTimeByUser
         public ChartType ChartType { get{ return ChartType.SparrowColumn; } }
         public ChartDataViewModel GetData(IEnumerable<CaseViewModel> visibleCases, IEnumerable<IntervalViewModel> intervals, IGenericDataSeriesFactory dataFactory)
         {
-            var chartData = dataFactory.Create(visibleCases, c => c.AssignedTo, c => c.EstimatedTime);
+            var chartData = dataFactory.CreateGrouped(visibleCases, c => c.AssignedTo, new List<GroupedSeriesValueConfig<CaseViewModel>>
+            {
+              new GroupedSeriesValueConfig<CaseViewModel>
+              {
+                Name = "Estimated Hours",
+                ValueSelector = c => c.EstimatedTime
+              }
+            });
             return new ChartDataViewModel
             {
                 Title = Title,
                 SubTitle = SubTitle,
-                Series = new ObservableCollection<SeriesViewModel>(new[]{chartData}),
+                Series = new ObservableCollection<SeriesViewModel>(chartData),
                 ChartType = ChartType
             };
         }

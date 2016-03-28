@@ -6,7 +6,8 @@ namespace TrackAssist.Shared.Charting
         ClusteredColumn,
         Line,
         SparrowLine,
-        SparrowColumn
+        SparrowColumn,
+        CategoricalColumn
     }
 }
 

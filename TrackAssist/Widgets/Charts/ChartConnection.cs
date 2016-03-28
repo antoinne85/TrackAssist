@@ -5,6 +5,7 @@ using PostSharp.Patterns.Model;
 using TrackAssist.Contracts.Data;
 using TrackAssist.Shared.Charting;
 using TrackAssist.Shared.ViewModels;
+using TrackAssist.Adapters;
 
 namespace TrackAssist.Widgets.Charts
 {
@@ -18,6 +19,7 @@ namespace TrackAssist.Widgets.Charts
 
         public ChartConnection()
         {
+          ViewModel = new SyncFusionChartViewModel();
         }
     }
 }

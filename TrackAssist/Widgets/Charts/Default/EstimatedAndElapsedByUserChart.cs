@@ -16,7 +16,7 @@ namespace TrackAssist.Widgets.Charts.EstimatedAndElapsedByUser
 {
     public class EstimatedAndElapsedByUserChart : IPluggable, IChartWidget
     {
-        public ChartType ChartType { get { return ChartType.SparrowColumn; } }
+        public ChartType ChartType { get { return ChartType.CategoricalColumn; } }
         public Guid Identifier { get; private set; }
         public string Title { get { return "Estimated Progress by User"; } }
         public string SubTitle { get { return "How far along is everyone?"; } }

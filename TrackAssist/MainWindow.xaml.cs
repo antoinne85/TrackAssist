@@ -35,7 +35,7 @@ namespace TrackAssist
             var seriesFactory = new GenericDataSeriesFactory(new DataPointFactory());
             var filterFactory = new BasicFilterFactory();
             var serializer = new GenericJsonSerializer();
-            var chartAdapter = new SparrowChartsAdapter();
+            var chartAdapter = new SyncFusionChartsAdapter();
             var vm = new MainViewModel(api, seriesFactory, filterFactory, serializer, chartAdapter);
             this.DataContext = vm;
 

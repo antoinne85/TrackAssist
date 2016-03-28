@@ -56,8 +56,8 @@
     <Reference Include="PostSharp.Patterns.Model">
       <HintPath>..\packages\PostSharp.Patterns.Model.4.0.41\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
     </Reference>
-    <Reference Include="Sparrow.Chart.Wpf.40">
-      <HintPath>..\packages\Sparrow.Chart.Wpf.13.1.0.118\lib\net40\Sparrow.Chart.Wpf.40.dll</HintPath>
+    <Reference Include="Syncfusion.SfChart.WPF">
+      <HintPath>..\packages\Syncfusion.SfChart.WPF40.13.4.0.63\lib\net40\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -90,6 +90,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Adapters\SparrowChartsAdapter.cs" />
+    <Compile Include="Adapters\SyncFusionChartAdapter.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Data\Factories\BasicFilterFactory.cs" />
     <Compile Include="Data\Factories\DataPointFactory.cs" />
@@ -104,10 +105,7 @@
     <Compile Include="Widgets\Charts\ChartConnection.cs" />
     <Compile Include="Widgets\Charts\Default\EstimatedAndElapsedByUserChart.cs" />
     <Compile Include="Widgets\Charts\Default\EstimatedTimeByUserChart.cs" />
-    <Compile Include="Widgets\Charts\LineChart.xaml.cs">
-      <DependentUpon>LineChart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widgets\Charts\Sparrow\LineChart.xaml.cs">
+    <Compile Include="Widgets\Charts\SyncFusion\LineChart.xaml.cs">
       <DependentUpon>LineChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widgets\Charts\TimesheetChart.cs" />
@@ -134,11 +132,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Widgets\Charts\LineChart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Widgets\Charts\Sparrow\LineChart.xaml">
+    <Page Include="Widgets\Charts\SyncFusion\LineChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

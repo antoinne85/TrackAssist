@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TrackAssist.Widgets.Charts
+namespace TrackAssist.Widgets.Charts.SyncFusion
 {
     /// <summary>
     /// Interaction logic for LineChart.xaml

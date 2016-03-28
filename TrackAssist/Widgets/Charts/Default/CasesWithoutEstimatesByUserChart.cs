@@ -26,11 +26,14 @@ namespace TrackAssist.Widgets.Charts.CasesWithoutEstimatesByUser
                     YValue = grp.Count()
                 });
 
-            var newSeries = new SeriesViewModel();
-            newSeries.Name = Title;
+            var seriesCollection = new ObservableCollection<SeriesViewModel>();
+
             foreach (var dp in dataPoints)
             {
+                var newSeries = new SeriesViewModel();
+                newSeries.Name = dp.Category;
                 newSeries.DataPoints.Add(dp);
+                seriesCollection.Add(newSeries);
             }
 
 
@@ -38,7 +41,7 @@ namespace TrackAssist.Widgets.Charts.CasesWithoutEstimatesByUser
             {
                 Title = Title,
                 SubTitle = SubTitle,
-                Series = new ObservableCollection<SeriesViewModel>(new []{newSeries}),
+                Series = seriesCollection,
                 ChartType = ChartType.SparrowColumn
             };
         }

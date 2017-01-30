@@ -18,3 +18,12 @@ I intend to add request validation, so you can get feedback on when you supply i
 The goal is to create a wrapper that can not only read from FogBugz, but also write data back in a convenient way. (Think, pull data, modify object, save it back.)
 
 The secondary goal is to have a desktop client that helps make managing certain aspects of time tracking and project management a little easier. For instance, if you want to be able to break down information in a graph that shows time entry by user by day, this may be the tool for you. It may not be there yet--but that's where I want to take it.
+
+# Other Notes
+I'm not terribly happy with some of the design choices I made when working on this project (especially using enums for field selectors). 
+
+The desktop app was sort of an exploration of what it might be like to create a pluggable/extensible desktop app, but I never really settled on what the public-facing API should look like, so if you go diving in there, don't expect to find much that's useful. You're better off sticking to the parts of the code that interact directly w/ the FogBugz API.
+
+There's a non-obvious (at least the first time you encounter it) behavior of the FogBugz API wherein users that are using the "Working On" feature have time intervals, but they don't have an end time.
+
+Since I worked on this, FogBugz has introduced a JSON API. If I were doing it all over again, I'd build against that instead.
